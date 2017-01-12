@@ -1,0 +1,8 @@
+{
+  "name": "layzee",
+  "version": "1.0.0",
+  "description": "Simple layout components for React",
+  "main": "index.js",
+  "author": "Dan Mutton <daniel.mutton@gmail.com>",
+  "license": "MIT"
+}
