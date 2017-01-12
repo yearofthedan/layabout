@@ -19,11 +19,13 @@ This is most definitely a WIP so is more like a set of notes at the moment
 - define gutter spacing units
 - overflow behaviour (?)
 
+~~~~
 <ColumnLayout columns={[10, 13, 5]} gutterSpacing="2" gutterSpacing="px" container={Article}>
   <section></section>
   <section></section>
   <section></section>
 </ColumnLayout>
+~~~~
 
 In the example the first section would have a flow-basis of 10/28, the second = 13/28, and the third of 5/28.
 
