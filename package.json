@@ -1,27 +1,24 @@
 {
-  "name": "layzee",
-  "version": "1.0.0",
+  "name": "layabout",
+  "version": "0.1.0",
   "description": "Simple layout components for React",
-  "main": "index.js",
-  "author": "Dan Mutton <daniel.mutton@gmail.com>",
-  "license": "MIT",
+  "author": "Dan Mutton",
   "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -c demo",
+    "build-storybook": "build-storybook -c demo"
+},
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "enzyme": "^2.7.0",
-    "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
-    "jasmine": "^2.5.3",
-    "react-dom": "^15.4.2",
-    "webpack": "^1.14.0"
+    "react-addons-test-utils": "^15.4.2",
+    "react-scripts": "0.8.5"
   },
   "dependencies": {
-    "react": "^15.4.2"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
