@@ -1,5 +1,7 @@
 # Layzee
 
+![build_status](https://app.snap-ci.com/yearofthedan/layabout/branch/master/build_image)
+
 Simple layout components for React.
 Designed to solve common problems, not all problems.
 
