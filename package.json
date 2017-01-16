@@ -9,11 +9,12 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -c demo",
     "build-storybook": "build-storybook -c demo"
-},
+  },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "enzyme": "^2.7.0",
     "eslint-config-airbnb": "^14.0.0",
+    "jest-enzyme": "^2.1.0-rc2",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.8.5"
   },

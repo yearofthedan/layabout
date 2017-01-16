@@ -29,3 +29,4 @@ globals:
   customisation: true
 env:
   browser: true
+  jest: true
