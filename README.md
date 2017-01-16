@@ -1,4 +1,4 @@
-# Layzee
+# Layabout
 
 ![build_status](https://app.snap-ci.com/yearofthedan/layabout/branch/master/build_image)
 
