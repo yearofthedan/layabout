@@ -23,8 +23,6 @@ rules:
     - never
   react/jsx-filename-extension:
     - off
-  react/prop-types:
-    - off
 globals:
   customisation: true
 env:

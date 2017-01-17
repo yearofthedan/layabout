@@ -74,16 +74,6 @@ describe('children', () => {
     expect(rendered.find('#2')).toBePresent();
   });
 
-  it('does not render the container or children when there are invalid children', () => {
-    const rendered = shallow(
-      <ColumnLayout>
-        { [] }
-        <div />
-      </ColumnLayout>,
-    );
-    expect(rendered.find('div')).toBeEmpty();
-  });
-
   describe('default behaviour', () => {
     let child1;
     let child2;
