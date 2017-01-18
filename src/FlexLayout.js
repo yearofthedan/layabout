@@ -13,18 +13,18 @@ const validChildren = children => isValidElement(children) ||
 
 const validContainerTemplate = template => (typeof template === 'string' ? !!DOM[template] : true);
 
-const deriveFlex = (index, columns, childrenCount) => {
-  const columnCount = columns.length;
-  const width = columns.reduce((total, curr) => curr + total, 0);
+const deriveFlex = (index, widths, childrenCount) => {
+  const widthCount = widths.length;
+  const width = widths.reduce((total, curr) => curr + total, 0);
 
-  if (columnCount === 0) {
+  if (widthCount === 0) {
     return 100 / childrenCount;
   }
-  return (columns[index % columnCount] * 100) / width;
+  return (widths[index % widthCount] * 100) / width;
 };
 
 
-const ColumnLayout = ({ children, columns, container }) => {
+const FlexLayout = ({ children, widths, container }) => {
   if (!validContainerTemplate(container) || !validChildren(children)) {
     return null;
   }
@@ -32,29 +32,29 @@ const ColumnLayout = ({ children, columns, container }) => {
   const laidOutChildren = React.Children
     .toArray(children)
     .map((child, index) => cloneElement(child, {
-      style: { ...child.props.style, flexBasis: `${deriveFlex(index, columns, children.length)}%` },
+      style: { ...child.props.style, flexBasis: `${deriveFlex(index, widths, children.length)}%` },
       key: index,
     }));
 
   return React.createElement(container, { style: containerStyles }, laidOutChildren);
 };
 
-ColumnLayout.propTypes = {
+FlexLayout.propTypes = {
   children: React.PropTypes.oneOfType([
     React.PropTypes.arrayOf(React.PropTypes.element),
     React.PropTypes.element,
   ]),
-  columns: React.PropTypes.arrayOf(React.PropTypes.number),
+  widths: React.PropTypes.arrayOf(React.PropTypes.number),
   container: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func,
   ]),
 };
 
-ColumnLayout.defaultProps = {
+FlexLayout.defaultProps = {
   children: [],
-  columns: [],
+  widths: [],
   container: 'div',
 };
 
-export default ColumnLayout;
+export default FlexLayout;

@@ -1,35 +1,32 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import ColumnLayout from '../src/ColumnLayout';
+import FlexLayout from '../src/FlexLayout';
 
-storiesOf('ColumnLayout', module)
+const Block = ({ style, children }) =>
+  <div style={{ height: '100px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
+
+storiesOf('FlexLayout', module)
   .add('Layout no specific widths', () => (
-    <ColumnLayout>
-      <div
-        style={{ borderStyle: 'dashed', boxSizing: 'border-box', backgroundColor: 'lightblue', height: '100px' }}
-      >Col 1</div>
-      <div style={{ borderStyle: 'dashed', boxSizing: 'border-box', backgroundColor: 'yellowgreen', height: '100px' }}>Col 2</div>
-    </ColumnLayout>
+    <FlexLayout>
+      <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+      <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+    </FlexLayout>
   ))
   .add('Nav bar', () => (
-    <ColumnLayout container="nav" columns={[1, 1, 1, 10, 1]}>
+    <FlexLayout container="nav" widths={[1, 1, 1, 10, 1]}>
       <a>Home</a>
       <a>Latest news</a>
       <a>FAQs</a>
       <a>Contact</a>
       <a>Logout</a>
-    </ColumnLayout>
+    </FlexLayout>
   ))
-  .add('Repeating rows', () => {
-    const Block = ({ style, children }) =>
-      <div style={{ height: '200px', ...style }}>{children}</div>;
-    return (
-      <ColumnLayout container="section" columns={[1, 1, 1]}>
-        <Block>1</Block>
-        <Block>2</Block>
-        <Block>3</Block>
-        <Block>4</Block>
-        <Block>5</Block>
-      </ColumnLayout>
-    );
-  });
+  .add('Repeating rows', () => (
+    <FlexLayout container="section" widths={[1, 1, 1]}>
+      <Block style={{ backgroundColor: 'lightblue' }}>1</Block>
+      <Block style={{ backgroundColor: 'yellowgreen' }}>2</Block>
+      <Block style={{ backgroundColor: 'red' }}>3</Block>
+      <Block style={{ backgroundColor: 'papayawhip' }}>4</Block>
+      <Block style={{ backgroundColor: 'orange' }}>5</Block>
+    </FlexLayout>
+  ));

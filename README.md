@@ -11,14 +11,14 @@ Simple layout components for React.
 - Inline and override styles to reduce conflicts, dependencies, and declutter class names.  
 
 ## Components
-### ColumnLayout
+### FlexLayout
 
-Lays out its children one by one according to a set of relative column widths. Overflow continues onto the new row, following the same template.
+Lays out its children one by one according to a set of relative widths. Overflow continues onto the new row, following the same template.
 
-`columns` (optional) set of values for sizing columns amongst the total space.
+`widths` (optional) set of values for sizing widths amongst the total space.
 
 Options:
-- `Array` of relative column sizes. e.g. [2, 3] where the first column will take up 40% and the second 60%.
+- `Array` of relative widths. e.g. [2, 3] where the first child will take up 40% and the second 60%.
 
 If no value is provided the children will be spaced equally amongst the available space.
 
@@ -26,28 +26,63 @@ If no value is provided the children will be spaced equally amongst the availabl
 
 Options:
 - `String` representation of a HTML DOM element. e.g. "section".
-- `React component type` can be either class or functional. Note that  ColumnLayout provides a style prop to the container. It is up to the provided container to pass this to a child element which can render it (eg. a HTML DOM element).
+- `React component type` can be either class or functional. Note that  FlexLayout provides a style prop to the container. It is up to the provided container to pass this to a child element which can render it (eg. a HTML DOM element).
 
 If no element is provided a `div` will be rendered as the container.
 
 
 `gutterSpacing` TO BE IMPLEMENTED
-- Spacing between columns. Can be standard style units such as %, px, em.
+- Spacing between content. Can be standard style units such as %, px, em.
 
 #### Example
 ~~~~
-<ColumnLayout
-  columns={[10, 13, 5]}
+<FlexLayout
+  widths={[10, 13, 5]}
   gutterSpacing="2px"
   container={Article}
 >
   <section></section>
   <section></section>
   <section></section>
-</ColumnLayout>
+</FlexLayout>
 ~~~~
 
 In the example above the sections would have spacing of 10/28ths, 13/28ths, and 5/28ths of the total available width.
 
-### Future
+### SpacedLayout
+To be implemented
+
+Lays out its children within the space available with any remaining spacing allocated according to the spacing property.
+
+`spacing` (optional) describes where to allocate remaining space.
+
+Options:
+- `String` of one of the following: `between`, `around`, `begin`, `end`
+
+If no value is provided spacing will be allocated to `between`.
+
+`container` (optional) Element to hold container styles and render children into.
+
+Options:
+- `String` representation of a HTML DOM element. e.g. "section".
+- `React component type` can be either class or functional. Note that  FlexLayout provides a style prop to the container. It is up to the provided container to pass this to a child element which can render it (eg. a HTML DOM element).
+
+If no element is provided a `div` will be rendered as the container.
+
+
+#### Example
+~~~~
+<SpacedLayout
+  spacing="between"
+  container={Article}
+>
+  <section></section>
+  <section></section>
+  <section></section>
+</SpacedLayout>
+~~~~
+
+In the example above any remaining spacing would be divided between the children.
+
+## Future
 - pass multiple layouts and the ability to switch. Useful for media queries.  
