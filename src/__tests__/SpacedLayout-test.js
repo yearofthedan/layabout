@@ -23,7 +23,7 @@ describe('container', () => {
     });
 
     it('aligns its content on the main axis with between spacing', () => {
-      expect(container).toHaveStyle('justifyContent', 'between');
+      expect(container).toHaveStyle('justifyContent', 'space-between');
     });
   });
 
@@ -54,27 +54,27 @@ describe('container', () => {
   describe('spacing', () => {
     it('applies a justify-content flex-start for begin', () => {
       const container = shallow(<SpacedLayout spacing="begin" />).first();
-      expect(container).toHaveStyle('justify-content', 'flex-start');
+      expect(container).toHaveStyle('justifyContent', 'flex-start');
     });
 
     it('applies a justify-content center for middle', () => {
       const container = shallow(<SpacedLayout spacing="middle" />).first();
-      expect(container).toHaveStyle('justify-content', 'center');
+      expect(container).toHaveStyle('justifyContent', 'center');
     });
 
     it('applies a justify-content flex-end for end', () => {
       const container = shallow(<SpacedLayout spacing="end" />).first();
-      expect(container).toHaveStyle('justify-content', 'flex-end');
+      expect(container).toHaveStyle('justifyContent', 'flex-end');
     });
 
-    it('applies a justify-content spaced-between for between', () => {
+    it('applies a justify-content space-between for between', () => {
       const container = shallow(<SpacedLayout spacing="between" />).first();
-      expect(container).toHaveStyle('justify-content', 'spaced-between');
+      expect(container).toHaveStyle('justifyContent', 'space-between');
     });
 
-    it('applies a justify-content spaced-around for around', () => {
+    it('applies a justify-content space-around for around', () => {
       const container = shallow(<SpacedLayout spacing="around" />).first();
-      expect(container).toHaveStyle('justify-content', 'spaced-around');
+      expect(container).toHaveStyle('justifyContent', 'space-around');
     });
   });
 });
