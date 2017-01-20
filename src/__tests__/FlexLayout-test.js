@@ -3,11 +3,6 @@ import { shallow } from 'enzyme';
 import { FlexLayout } from '../';
 
 describe('container', () => {
-  it('renders a div for a container', () => {
-    const container = shallow(<FlexLayout />).find('div');
-    expect(container).toBePresent();
-  });
-
   describe('default behaviour', () => {
     let container;
 
@@ -15,11 +10,15 @@ describe('container', () => {
       container = shallow(<FlexLayout />).find('div');
     });
 
+    it('renders a div for a container', () => {
+      expect(container).toBePresent();
+    });
+
     it('applies a flex display', () => {
       expect(container).toHaveStyle('display', 'flex');
     });
 
-    it('aligns its content in the center', () => {
+    it('aligns its content on the cross axis in the center', () => {
       expect(container).toHaveStyle('alignItems', 'center');
     });
 

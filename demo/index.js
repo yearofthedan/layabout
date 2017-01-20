@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import FlexLayout from '../src/FlexLayout';
+import { FlexLayout, SpacedLayout } from '../src';
 
 const Block = ({ style, children }) =>
   <div style={{ height: '100px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
@@ -29,4 +29,35 @@ storiesOf('FlexLayout', module)
       <Block style={{ backgroundColor: 'papayawhip' }}>4</Block>
       <Block style={{ backgroundColor: 'orange' }}>5</Block>
     </FlexLayout>
+  ));
+storiesOf('SpacedLayout', module)
+  .add('Layout default spacing', () => (
+    <SpacedLayout>
+      <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+      <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+    </SpacedLayout>
+  ))
+  .add('Layout spacing types', () => (
+    <section>
+      <SpacedLayout spacing="begin">
+        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+      <SpacedLayout spacing="middle">
+        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+      <SpacedLayout spacing="end">
+        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+      <SpacedLayout spacing="between">
+        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+      <SpacedLayout spacing="around">
+        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+    </section>
   ));

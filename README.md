@@ -4,6 +4,8 @@
 
 Simple layout components for React.
 
+*This is very much in alpha, so expect the api to shift a lot.*
+
 ## Philosophy
 - Be light on configuration, preferring to have new components over complex APIs. Understand usage directly from the component name rather than derived from combinations of props.  
 - Aim to solve a set of common problems, not all problems and variations.
@@ -30,6 +32,12 @@ Options:
 
 If no element is provided a `div` will be rendered as the container.
 
+`crossAxis` TO BE IMPLEMENTED
+- Describes how to align content on the cross axis.
+
+Options:
+- `String` of one of the following: `begin`, `middle`, `end`
+
 
 `gutterSpacing` TO BE IMPLEMENTED
 - Spacing between content. Can be standard style units such as %, px, em.
@@ -50,14 +58,12 @@ If no element is provided a `div` will be rendered as the container.
 In the example above the sections would have spacing of 10/28ths, 13/28ths, and 5/28ths of the total available width.
 
 ### SpacedLayout
-To be implemented
-
 Lays out its children within the space available with any remaining spacing allocated according to the spacing property.
 
 `spacing` (optional) describes where to allocate remaining space.
 
 Options:
-- `String` of one of the following: `between`, `around`, `begin`, `end`
+- `String` of one of the following: `between`, `around`, `begin`, `end`, `middle`
 
 If no value is provided spacing will be allocated to `between`.
 
@@ -68,6 +74,13 @@ Options:
 - `React component type` can be either class or functional. Note that  FlexLayout provides a style prop to the container. It is up to the provided container to pass this to a child element which can render it (eg. a HTML DOM element).
 
 If no element is provided a `div` will be rendered as the container.
+
+`crossAxis` TO BE IMPLEMENTED
+- Describes how to align content on the cross axis.
+
+Options:
+- `String` of one of the following: `begin`, `middle`, `end`
+
 
 
 #### Example
