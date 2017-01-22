@@ -98,16 +98,24 @@ describe('children', () => {
   describe('widths', () => {
     it('gives each child the flexBasis for its position', () => {
       const rendered = shallow(
-        <FlexLayout widths={[4, 2, 1, 3]}>
+        <FlexLayout widths={[5, 3, 2]}>
           <div id="1" />
           <div id="2" />
           <div id="3" />
-          <div id="4" />
         </FlexLayout>);
-      expect(rendered.find('#1')).toHaveStyle('flexBasis', '40%');
-      expect(rendered.find('#2')).toHaveStyle('flexBasis', '20%');
-      expect(rendered.find('#3')).toHaveStyle('flexBasis', '10%');
-      expect(rendered.find('#4')).toHaveStyle('flexBasis', '30%');
+      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
+      expect(rendered.find('#2')).toHaveStyle('flexBasis', '30%');
+      expect(rendered.find('#3')).toHaveStyle('flexBasis', '20%');
+    });
+
+    it('derives an empty array as even flex for all children', () => {
+      const rendered = shallow(
+        <FlexLayout widths={[]}>
+          <div id="1" />
+          <div id="2" />
+        </FlexLayout>);
+      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
+      expect(rendered.find('#2')).toHaveStyle('flexBasis', '50%');
     });
 
     it('repeats as though on a new row when there are more children than widths', () => {

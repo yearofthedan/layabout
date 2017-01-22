@@ -2,7 +2,7 @@ import React, { cloneElement, isValidElement, DOM } from 'react';
 
 const containerStyles = {
   display: 'flex',
-  alignItems: 'center',
+  alignContent: 'flex-start',
   flexWrap: 'wrap',
 };
 
