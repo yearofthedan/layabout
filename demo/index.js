@@ -5,23 +5,30 @@ import { FlexLayout, SpacedLayout } from '../src';
 const Block = ({ style, children }) =>
   <div style={{ height: '100px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
 
+const Container = ({ style, children }) =>
+  <section style={{ height: '200px', border: 'solid', ...style }}>{children}</section>;
+
 storiesOf('FlexLayout', module)
-  .add('Layout no specific widths', () => (
+  .add('default widths', () => (
     <FlexLayout>
       <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
       <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
     </FlexLayout>
   ))
-  .add('Nav bar', () => (
-    <FlexLayout container="nav" widths={[1, 1, 1, 10, 1]}>
-      <a>Home</a>
-      <a>Latest news</a>
-      <a>FAQs</a>
-      <a>Contact</a>
-      <a>Logout</a>
-    </FlexLayout>
+  .add('align cross axis', () => (
+    <section>
+      <FlexLayout container={Container} alignCrossAxis="begin">
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 1</Block>
+      </FlexLayout>
+      <FlexLayout container={Container} alignCrossAxis="middle">
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 1</Block>
+      </FlexLayout>
+      <FlexLayout container={Container} alignCrossAxis="end">
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 1</Block>
+      </FlexLayout>
+    </section>
   ))
-  .add('Repeating rows', () => (
+  .add('overflow', () => (
     <FlexLayout container="section" widths={[1, 1, 1]}>
       <Block style={{ backgroundColor: 'lightblue' }}>1</Block>
       <Block style={{ backgroundColor: 'yellowgreen' }}>2</Block>
@@ -31,7 +38,7 @@ storiesOf('FlexLayout', module)
     </FlexLayout>
   ));
 storiesOf('SpacedLayout', module)
-  .add('Layout default spacing', () => (
+  .add('default spacing', () => (
     <SpacedLayout>
       <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
       <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
@@ -60,4 +67,35 @@ storiesOf('SpacedLayout', module)
         <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
       </SpacedLayout>
     </section>
+  ))
+  .add('align cross axis', () => (
+    <section>
+      <SpacedLayout container={Container} alignCrossAxis="begin">
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+      <SpacedLayout container={Container} alignCrossAxis="middle">
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+      <SpacedLayout container={Container} alignCrossAxis="end">
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedLayout>
+    </section>
   ));
+
+storiesOf('Examples', module)
+.add('Nav bar', () => (
+  <section>
+    <SpacedLayout>
+      <FlexLayout>
+        <a>Home</a>
+        <a>Latest news</a>
+        <a>FAQs</a>
+        <a>Contact</a>
+      </FlexLayout>
+      <a>Logout</a>
+    </SpacedLayout>
+  </section>
+));

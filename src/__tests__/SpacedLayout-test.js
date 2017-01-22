@@ -76,6 +76,30 @@ describe('container', () => {
       const container = shallow(<SpacedLayout spacing="around" />).first();
       expect(container).toHaveStyle('justifyContent', 'space-around');
     });
+
+    it('applies a justify-content space-between for unknown values', () => {
+      const container = shallow(<SpacedLayout spacing="unknown" />).first();
+      expect(container).toHaveStyle('justifyContent', 'space-between');
+    });
+  });
+
+  describe('align cross axis', () => {
+    it('applies a align-items start for begin', () => {
+      const container = shallow(<SpacedLayout alignCrossAxis="begin" />).first();
+      expect(container).toHaveStyle('alignItems', 'flex-start');
+    });
+    it('applies a align-items center for middle', () => {
+      const container = shallow(<SpacedLayout alignCrossAxis="middle" />).first();
+      expect(container).toHaveStyle('alignItems', 'center');
+    });
+    it('applies a align-items end for end', () => {
+      const container = shallow(<SpacedLayout alignCrossAxis="end" />).first();
+      expect(container).toHaveStyle('alignItems', 'flex-end');
+    });
+    it('applies a align-items center for unknown values', () => {
+      const container = shallow(<SpacedLayout alignCrossAxis="unknown" />).first();
+      expect(container).toHaveStyle('alignItems', 'center');
+    });
   });
 });
 

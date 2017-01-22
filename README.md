@@ -2,11 +2,11 @@
 
 ![build_status](https://app.snap-ci.com/yearofthedan/layabout/branch/master/build_image)
 
-Simple layout components for React.
+Low config layout components for React.
 
 *This is very much in alpha, so expect the api to shift a lot.*
 
-## Philosophy
+## Guiding philosophy
 - Be light on configuration, preferring to have new components over complex APIs. Understand usage directly from the component name rather than derived from combinations of props.  
 - Aim to solve a set of common problems, not all problems and variations.
 - Be light on DOM detritus. Prefer to style existing children and containers rather than to create "wrappers" which can impact accessibility.
@@ -32,7 +32,7 @@ Options:
 
 If no element is provided a `div` will be rendered as the container.
 
-`crossAxis` TO BE IMPLEMENTED
+`alignCrossAxis`
 - Describes how to align content on the cross axis.
 
 Options:
@@ -75,7 +75,7 @@ Options:
 
 If no element is provided a `div` will be rendered as the container.
 
-`crossAxis` TO BE IMPLEMENTED
+`alignCrossAxis`
 - Describes how to align content on the cross axis.
 
 Options:
@@ -98,4 +98,6 @@ Options:
 In the example above any remaining spacing would be divided between the children.
 
 ## Future
-- pass multiple layouts and the ability to switch. Useful for media queries.  
+- allow transposition
+- think about whether we could incorporate media queries in some way  
+- consider what level of historical/cross-browser support we want to provide

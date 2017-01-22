@@ -13,7 +13,7 @@ const validChildren = children => isValidElement(children) ||
 
 const validContainerTemplate = template => (typeof template === 'string' ? !!DOM[template] : true);
 
-const deriveFlex = (index, widths, childrenCount) => {
+const deriveFlex = (index, widths, childrenCount = 1) => {
   const widthCount = widths.length;
   const width = widths.reduce((total, curr) => curr + total, 0);
 
@@ -23,8 +23,16 @@ const deriveFlex = (index, widths, childrenCount) => {
   return (widths[index % widthCount] * 100) / width;
 };
 
+const deriveCrossAlignment = alignment => {
+  switch (alignment) {
+    case 'begin': return 'flex-start';
+    case 'middle': return 'center';
+    case 'end': return 'flex-end';
+    default: return 'center';
+  }
+};
 
-const FlexLayout = ({ children, widths, container }) => {
+const FlexLayout = ({ children, widths, container, alignCrossAxis }) => {
   if (!validContainerTemplate(container) || !validChildren(children)) {
     return null;
   }
@@ -36,7 +44,9 @@ const FlexLayout = ({ children, widths, container }) => {
       key: index,
     }));
 
-  return React.createElement(container, { style: containerStyles }, laidOutChildren);
+  return React.createElement(container, {
+    style: { ...containerStyles, alignItems: deriveCrossAlignment(alignCrossAxis) },
+  }, laidOutChildren);
 };
 
 FlexLayout.propTypes = {
@@ -45,6 +55,7 @@ FlexLayout.propTypes = {
     React.PropTypes.element,
   ]),
   widths: React.PropTypes.arrayOf(React.PropTypes.number),
+  alignCrossAxis: React.PropTypes.string,
   container: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func,
@@ -55,6 +66,7 @@ FlexLayout.defaultProps = {
   children: [],
   widths: [],
   container: 'div',
+  alignCrossAxis: 'middle',
 };
 
 export default FlexLayout;

@@ -12,7 +12,16 @@ const deriveSpacing = spacing => {
     case 'end': return 'flex-end';
     case 'around': return 'space-around';
     case 'between': return 'space-between';
-    default: return 'between';
+    default: return 'space-between';
+  }
+};
+
+const deriveCrossAlignment = alignment => {
+  switch (alignment) {
+    case 'begin': return 'flex-start';
+    case 'middle': return 'center';
+    case 'end': return 'flex-end';
+    default: return 'center';
   }
 };
 
@@ -23,13 +32,17 @@ const validChildren = children => isValidElement(children) ||
 
 const validContainerTemplate = template => (typeof template === 'string' ? !!DOM[template] : true);
 
-const SpacedLayout = ({ children, container, spacing }) => {
+const SpacedLayout = ({ children, container, spacing, alignCrossAxis }) => {
   if (!validContainerTemplate(container) || !validChildren(children)) {
     return null;
   }
 
   return React.createElement(container, {
-    style: { ...containerStyles, justifyContent: deriveSpacing(spacing) },
+    style: {
+      ...containerStyles,
+      alignItems: deriveCrossAlignment(alignCrossAxis),
+      justifyContent: deriveSpacing(spacing),
+    },
   }, children);
 };
 
@@ -38,6 +51,7 @@ SpacedLayout.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.element),
     React.PropTypes.element,
   ]),
+  alignCrossAxis: React.PropTypes.string,
   container: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func,
@@ -49,6 +63,7 @@ SpacedLayout.defaultProps = {
   children: [],
   container: 'div',
   spacing: 'between',
+  alignCrossAxis: 'middle',
 };
 
 export default SpacedLayout;

@@ -50,50 +50,48 @@ describe('container', () => {
       expect(container).not.toBePresent();
     });
   });
+
+  describe('align cross axis', () => {
+    it('applies a align-items start for begin', () => {
+      const container = shallow(<FlexLayout alignCrossAxis="begin" />).first();
+      expect(container).toHaveStyle('alignItems', 'flex-start');
+    });
+    it('applies a align-items center for middle', () => {
+      const container = shallow(<FlexLayout alignCrossAxis="middle" />).first();
+      expect(container).toHaveStyle('alignItems', 'center');
+    });
+    it('applies a align-items end for end', () => {
+      const container = shallow(<FlexLayout alignCrossAxis="end" />).first();
+      expect(container).toHaveStyle('alignItems', 'flex-end');
+    });
+    it('applies a align-items center for unknown values', () => {
+      const container = shallow(<FlexLayout alignCrossAxis="unknown" />).first();
+      expect(container).toHaveStyle('alignItems', 'center');
+    });
+  });
 });
 
 describe('children', () => {
-  it('renders a single child', () => {
-    const rendered = shallow(
-      <FlexLayout>
-        <div id="1" />
-      </FlexLayout>,
-    );
-    expect(rendered.find('#1')).toBePresent();
-  });
-
-  it('renders multiple children', () => {
-    const rendered = shallow(
-      <FlexLayout>
-        <div id="1" />
-        <div id="2" />
-      </FlexLayout>,
-    );
-    expect(rendered.find('#1')).toBePresent();
-    expect(rendered.find('#2')).toBePresent();
-  });
-
   describe('default behaviour', () => {
-    let child1;
-    let child2;
-    const SampleComponent = ({ style }) => <div style={style} />;
-    beforeEach(() => {
-      const rendered = shallow(
-        <FlexLayout>
-          <div style={{ color: 'red' }} id="1" />
-          <SampleComponent id="2" />
-        </FlexLayout>);
-      child1 = rendered.find('#1');
-      child2 = rendered.find('#2');
+    it('applies a flex basis to fit a single child across the full row', () => {
+      const rendered = shallow(<FlexLayout><div id="1" /></FlexLayout>);
+      expect(rendered.find('#1')).toHaveStyle('flexBasis', '100%');
     });
 
     it('applies a flex basis to fit the children evenly in one row', () => {
-      expect(child1).toHaveStyle('flexBasis', '50%');
-      expect(child2).toHaveStyle('flexBasis', '50%');
+      const rendered = shallow(
+        <FlexLayout>
+          <div id="1" />
+          <div id="2" />
+        </FlexLayout>,
+      );
+      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
+      expect(rendered.find('#2')).toHaveStyle('flexBasis', '50%');
     });
 
     it('preserves existing styles', () => {
-      expect(child1).toHaveStyle('color', 'red');
+      const rendered = shallow(<FlexLayout><div id="1" style={{ color: 'red' }} /></FlexLayout>);
+      expect(rendered.find('#1')).toHaveStyle('color', 'red');
     });
   });
 
