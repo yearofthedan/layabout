@@ -19,7 +19,8 @@
     "lint": "eslint src",
     "test-once": "yarn lint && jest",
     "test": "jest --watch",
-    "demo": "start-storybook -p 9009 -c demo"
+    "demo": "start-storybook -p 9009 -c demo",
+    "build-storybook": "build-storybook -c demo -o docs"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
