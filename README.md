@@ -14,7 +14,9 @@ Low config layout components for React.
 - Aim to solve a set of common problems, not all problems and variations.
 - Be light on DOM detritus. Prefer to style existing children and containers rather than to create "wrappers" which can impact accessibility.
 - Inline and override styles to reduce conflicts, dependencies, and declutter class names.  
+
 ---
+
 ## Components
 ### FlexLayout
 
