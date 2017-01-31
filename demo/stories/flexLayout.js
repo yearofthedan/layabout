@@ -4,21 +4,29 @@ import { withKnobs, object, select } from '@kadira/storybook-addon-knobs';
 
 import { FlexLayout } from '../../src';
 
+const infoConfig = { inline: true, source: true, header: false, propTables: false };
 const Block = ({ style, children }) =>
-  <div style={{ height: '100px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
-
+  <div style={{ height: '75px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
 const Container = ({ style, children }) =>
-  <section style={{ height: '100vh', border: 'solid', ...style }}>{children}</section>;
+  <section style={{ height: '200px', border: 'solid', ...style }}>{children}</section>;
 
 export default storiesOf('FlexLayout', module)
   .addDecorator(withKnobs)
-  .add('default', () => (
-    <FlexLayout>
-      <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
-      <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
-    </FlexLayout>
-  ))
-  .add('adjustable properties', () => {
+  .addWithInfo('default',
+    `
+      This is the default behaviour of the FlexLayout.
+    `,
+   () => (
+     <FlexLayout>
+       <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+       <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+     </FlexLayout>
+  ), infoConfig)
+  .addWithInfo('adjust properties',
+  `
+    You can use the knobs to adjust properties and see the effect (the source will also update).
+  `,
+  () => {
     const options = {
       begin: 'begin',
       middle: 'middle',
@@ -38,4 +46,4 @@ export default storiesOf('FlexLayout', module)
         </FlexLayout>
       </section>
     );
-  });
+  }, infoConfig);

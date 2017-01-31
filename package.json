@@ -1,6 +1,6 @@
 {
   "name": "layabout",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Simple layout components for React",
   "author": "Dan Mutton",
   "license": "Apache-2.0",
@@ -23,6 +23,7 @@
     "build-storybook": "build-storybook -c demo -o docs"
   },
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
     "@kadira/storybook-addon-knobs": "^1.7.1",
     "babel-cli": "^6.18.0",
