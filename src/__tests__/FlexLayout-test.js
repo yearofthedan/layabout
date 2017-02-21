@@ -75,7 +75,7 @@ describe('children', () => {
   describe('default behaviour', () => {
     it('applies a flex basis to fit a single child across the full row', () => {
       const rendered = shallow(<FlexLayout><div id="1" /></FlexLayout>);
-      expect(rendered.find('#1')).toHaveStyle('flexBasis', '100%');
+      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 100%');
     });
 
     it('applies a flex basis to fit the children evenly in one row', () => {
@@ -85,8 +85,8 @@ describe('children', () => {
           <div id="2" />
         </FlexLayout>,
       );
-      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
-      expect(rendered.find('#2')).toHaveStyle('flexBasis', '50%');
+      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 50%');
+      expect(rendered.find('#2')).toHaveStyle('flex', '0 0 50%');
     });
 
     it('preserves existing styles', () => {
@@ -103,9 +103,9 @@ describe('children', () => {
           <div id="2" />
           <div id="3" />
         </FlexLayout>);
-      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
-      expect(rendered.find('#2')).toHaveStyle('flexBasis', '30%');
-      expect(rendered.find('#3')).toHaveStyle('flexBasis', '20%');
+      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 50%');
+      expect(rendered.find('#2')).toHaveStyle('flex', '0 0 30%');
+      expect(rendered.find('#3')).toHaveStyle('flex', '0 0 20%');
     });
 
     it('derives an empty array as even flex for all children', () => {
@@ -114,8 +114,8 @@ describe('children', () => {
           <div id="1" />
           <div id="2" />
         </FlexLayout>);
-      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
-      expect(rendered.find('#2')).toHaveStyle('flexBasis', '50%');
+      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 50%');
+      expect(rendered.find('#2')).toHaveStyle('flex', '0 0 50%');
     });
 
     it('repeats as though on a new row when there are more children than widths', () => {
@@ -128,10 +128,10 @@ describe('children', () => {
           <div id="5" />
           <div id="6" />
         </FlexLayout>);
-      expect(rendered.find('#1')).toHaveStyle('flexBasis', '50%');
-      expect(rendered.find('#4')).toHaveStyle('flexBasis', '50%');
-      expect(rendered.find('#5')).toHaveStyle('flexBasis', '30%');
-      expect(rendered.find('#6')).toHaveStyle('flexBasis', '20%');
+      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 50%');
+      expect(rendered.find('#4')).toHaveStyle('flex', '0 0 50%');
+      expect(rendered.find('#5')).toHaveStyle('flex', '0 0 30%');
+      expect(rendered.find('#6')).toHaveStyle('flex', '0 0 20%');
     });
   });
 });

@@ -40,7 +40,7 @@ const FlexLayout = ({ children, widths, container, alignCrossAxis }) => {
   const laidOutChildren = React.Children
     .toArray(children)
     .map((child, index) => cloneElement(child, {
-      style: { ...child.props.style, flexBasis: `${deriveFlex(index, widths, children.length)}%` },
+      style: { ...child.props.style, flex: `0 0 ${deriveFlex(index, widths, children.length)}%` },
       key: index,
     }));
 
