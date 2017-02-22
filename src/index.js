@@ -1,2 +1,2 @@
-export { default as FlexLayout } from './Flex';
+export * from './Flex';
 export { default as SpacedLayout } from './SpacedLayout';

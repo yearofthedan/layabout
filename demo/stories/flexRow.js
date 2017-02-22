@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { withKnobs, object, select } from '@kadira/storybook-addon-knobs';
 
-import { FlexLayout } from '../../src';
+import { FlexRow } from '../../src';
 
 const infoConfig = { inline: true, source: true, header: false, propTables: false };
 const Block = ({ style, children }) =>
@@ -10,17 +10,17 @@ const Block = ({ style, children }) =>
 const Container = ({ style, children }) =>
   <section style={{ height: '200px', border: 'solid', ...style }}>{children}</section>;
 
-export default storiesOf('FlexLayout', module)
+export default storiesOf('FlexRow', module)
   .addDecorator(withKnobs)
   .addWithInfo('default',
     `
-      This is the default behaviour of the FlexLayout.
+      This is the default behaviour of the FlexRow.
     `,
    () => (
-     <FlexLayout>
+     <FlexRow>
        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
-     </FlexLayout>
+     </FlexRow>
   ), infoConfig)
   .addWithInfo('adjust properties',
   `
@@ -33,17 +33,17 @@ export default storiesOf('FlexLayout', module)
       end: 'end',
     };
     const alignCrossAxis = select('alignCrossAxis', options, 'begin');
-    const widths = object('widths', [1, 1, 1]);
+    const sizes = object('sizes', [1, 1, 1]);
 
     return (
       <section>
-        <FlexLayout container={Container} alignCrossAxis={alignCrossAxis} widths={widths}>
+        <FlexRow container={Container} alignCrossAxis={alignCrossAxis} sizes={sizes}>
           <Block style={{ backgroundColor: 'lightblue' }}>1</Block>
           <Block style={{ backgroundColor: 'yellowgreen', height: '20px' }}>2</Block>
           <Block style={{ backgroundColor: 'red' }}>3</Block>
           <Block style={{ backgroundColor: 'papayawhip' }}>4</Block>
           <Block style={{ backgroundColor: 'orange' }}>5</Block>
-        </FlexLayout>
+        </FlexRow>
       </section>
     );
   }, infoConfig);

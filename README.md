@@ -18,14 +18,14 @@ Low config layout components for React.
 ---
 
 ## Components
-### FlexLayout
+### FlexRow / FlexColumn
 
-Lays out its children one by one according to a set of relative widths. Overflow continues onto the new row, following the same template.
+Lays out its children one by one according to a set of relative sizes. Overflow continues onto the new row/column, following the same template.
 
-`widths` (optional) set of values for sizing widths amongst the total space.
+`sizes` (optional) set of values for sizing sizes amongst the total space.
 
 Options:
-- `Array` of relative widths. e.g. [2, 3] where the first child will take up 40% and the second 60%.
+- `Array` of relative sizes. e.g. [2, 3] where the first child will take up 40% and the second 60%.
 
 If no value is provided the children will be spaced equally amongst the available space.
 
@@ -33,7 +33,7 @@ If no value is provided the children will be spaced equally amongst the availabl
 
 Options:
 - `String` representation of a HTML DOM element. e.g. "section".
-- `React component type` can be either class or functional. Note that  FlexLayout provides a style prop to the container. It is up to the provided container to pass this to a child element which can render it (eg. a HTML DOM element).
+- `React component type` can be either class or functional. Note that FlexRow and FlexColumn provide a style prop to the container. It is up to the provided container to pass this to a child element which can render it (eg. a HTML DOM element).
 
 If no element is provided a `div` will be rendered as the container.
 
@@ -50,7 +50,7 @@ Options:
 #### Example
 ~~~~
 <FlexLayout
-  widths={[10, 13, 5]}
+  sizes={[10, 13, 5]}
   gutterSpacing="2px"
   container={Article}
 >

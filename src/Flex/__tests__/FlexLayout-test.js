@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FlexLayout from '../';
+import FlexLayout from '../FlexLayout';
 
 describe('container', () => {
   describe('default behaviour', () => {
@@ -24,6 +24,10 @@ describe('container', () => {
 
     it('overflows its content to the next row', () => {
       expect(container).toHaveStyle('flexWrap', 'wrap');
+    });
+
+    it('sets a flex-direction of row', () => {
+      expect(container).toHaveStyle('flexDirection', 'row');
     });
   });
 
@@ -62,6 +66,13 @@ describe('container', () => {
       expect(container).toHaveStyle('alignItems', 'center');
     });
   });
+
+  describe('direction', () => {
+    it('applies a provided direction to flexDirection', () => {
+      const container = shallow(<FlexLayout direction="column" />).first();
+      expect(container).toHaveStyle('flexDirection', 'column');
+    });
+  });
 });
 
 describe('children', () => {
@@ -88,10 +99,10 @@ describe('children', () => {
     });
   });
 
-  describe('widths', () => {
+  describe('sizes', () => {
     it('gives each child the flexBasis for its position', () => {
       const rendered = shallow(
-        <FlexLayout widths={[5, 3, 2]}>
+        <FlexLayout sizes={[5, 3, 2]}>
           <div id="1" />
           <div id="2" />
           <div id="3" />
@@ -103,7 +114,7 @@ describe('children', () => {
 
     it('derives an empty array as even flex for all children', () => {
       const rendered = shallow(
-        <FlexLayout widths={[]}>
+        <FlexLayout sizes={[]}>
           <div id="1" />
           <div id="2" />
         </FlexLayout>);
@@ -111,9 +122,9 @@ describe('children', () => {
       expect(rendered.find('#2')).toHaveStyle('flex', '0 0 50%');
     });
 
-    it('repeats as though on a new row when there are more children than widths', () => {
+    it('repeats as though on a new row when there are more children than sizes', () => {
       const rendered = shallow(
-        <FlexLayout widths={[5, 3, 2]}>
+        <FlexLayout sizes={[5, 3, 2]}>
           <div id="1" />
           <div id="2" />
           <div id="3" />

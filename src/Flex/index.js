@@ -1,1 +1,2 @@
-export { default } from './FlexLayout';
+export { default as FlexColumn } from './FlexColumn';
+export { default as FlexRow } from './FlexRow';
