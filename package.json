@@ -1,6 +1,6 @@
 {
   "name": "layabout",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Simple layout components for React",
   "author": "Dan Mutton",
   "license": "Apache-2.0",
@@ -20,7 +20,7 @@
     "test-once": "yarn lint && jest",
     "test": "jest --watch",
     "demo": "start-storybook -p 9009 -c demo",
-    "build-storybook": "build-storybook -c demo -o docs"
+    "build-demo-docs": "build-storybook -c demo -o docs"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
