@@ -62,7 +62,7 @@ Options:
 
 In the example above the sections would have spacing of 10/28ths, 13/28ths, and 5/28ths of the total available width.
 
-### SpacedLayout
+### SpacedColumn / SpacedRow
 Lays out its children within the space available with any remaining spacing allocated according to the spacing property.
 
 `spacing` (optional) describes where to allocate remaining space.
@@ -104,6 +104,5 @@ In the example above any remaining spacing would be divided between the children
 
 ---
 ## Future
-- allow transposition
 - think about whether we could incorporate media queries in some way  
 - consider what level of historical/cross-browser support we want to provide

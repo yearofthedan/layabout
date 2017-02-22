@@ -2,25 +2,27 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { withKnobs, select } from '@kadira/storybook-addon-knobs';
 
-import { SpacedLayout } from '../../src';
+import { SpacedColumn } from '../../src';
 
 const infoConfig = { inline: true, source: true, header: false, propTables: false };
 const Block = ({ style, children }) =>
-  <div style={{ height: '75px', width: '75px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
+  <div style={{ height: '40px', width: '40px', borderStyle: 'dashed', boxSizing: 'border-box', ...style }}>{children}</div>;
 const Container = ({ style, children }) =>
-  <section style={{ height: '200px', border: 'solid', ...style }}>{children}</section>;
+  <section style={{ height: '250px', border: 'solid', ...style }}>{children}</section>;
 
-export default storiesOf('SpacedLayout', module)
+export default storiesOf('SpacedColumn', module)
   .addDecorator(withKnobs)
   .addWithInfo('default',
     `
-      This is the default behaviour of the SpacedLayout.
+      This is the default behaviour of the SpacedColumn.
     `,
   () => (
-    <SpacedLayout>
-      <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
-      <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
-    </SpacedLayout>
+    <div style={{ display: 'flex', height: '200px' }}>
+      <SpacedColumn>
+        <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+      </SpacedColumn>
+    </div>
   ), infoConfig)
   .addWithInfo('adjust properties',
   `
@@ -45,13 +47,13 @@ export default storiesOf('SpacedLayout', module)
 
      return (
        <section>
-         <SpacedLayout container={Container} alignCrossAxis={alignCrossAxis} spacing={spacing}>
+         <SpacedColumn container={Container} alignCrossAxis={alignCrossAxis} spacing={spacing}>
            <Block style={{ backgroundColor: 'lightblue' }}>1</Block>
            <Block style={{ backgroundColor: 'yellowgreen', height: '20px' }}>2</Block>
            <Block style={{ backgroundColor: 'red' }}>3</Block>
            <Block style={{ backgroundColor: 'papayawhip' }}>4</Block>
            <Block style={{ backgroundColor: 'orange' }}>5</Block>
-         </SpacedLayout>
+         </SpacedColumn>
        </section>
      );
    }, infoConfig);

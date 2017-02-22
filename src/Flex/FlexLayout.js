@@ -1,5 +1,6 @@
 import { PropTypes, createElement } from 'react';
-import layout, { POSITIONS, DIRECTIONS } from './layout';
+import layout from './layout';
+import { POSITIONS, DIRECTIONS } from '../styleConstants';
 import validContainer from '../containerValidation';
 
 const { oneOfType, arrayOf, element, string, number } = PropTypes;

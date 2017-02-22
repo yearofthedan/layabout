@@ -17,10 +17,12 @@ export default storiesOf('FlexColumn', module)
       This is the default behaviour of the FlexColumn.
     `,
    () => (
-     <FlexColumn>
-       <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
-       <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
-     </FlexColumn>
+     <div style={{ display: 'flex', height: '200px' }}>
+       <FlexColumn>
+         <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+         <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+       </FlexColumn>
+     </div>
   ), infoConfig)
   .addWithInfo('adjust properties',
   `

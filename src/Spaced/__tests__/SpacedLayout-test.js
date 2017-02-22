@@ -25,6 +25,10 @@ describe('container', () => {
     it('aligns its content on the main axis with between spacing', () => {
       expect(container).toHaveStyle('justifyContent', 'space-between');
     });
+
+    it('sets a flex-direction of row', () => {
+      expect(container).toHaveStyle('flexDirection', 'row');
+    });
   });
 
   describe('container template', () => {
@@ -41,13 +45,6 @@ describe('container', () => {
         <SpacedLayout container={SampleComponent} />,
       ).find(SampleComponent);
       expect(container).toBePresent();
-    });
-
-    it('does not render the container or children if the container type is invalid', () => {
-      const container = shallow(
-        <SpacedLayout container="tht" />,
-      ).find('tht');
-      expect(container).not.toBePresent();
     });
   });
 
@@ -100,6 +97,13 @@ describe('container', () => {
       const container = shallow(<SpacedLayout alignCrossAxis="unknown" />).first();
       expect(container).toHaveStyle('alignItems', 'center');
     });
+  });
+});
+
+describe('direction', () => {
+  it('applies a provided direction to flexDirection', () => {
+    const container = shallow(<SpacedLayout direction="column" />).first();
+    expect(container).toHaveStyle('flexDirection', 'column');
   });
 });
 

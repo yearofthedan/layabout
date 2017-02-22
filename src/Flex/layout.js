@@ -19,17 +19,4 @@ const applyLayoutConstraints = (children, sizes) => Children.toArray(children)
     key: index,
   }));
 
-export const POSITIONS = {
-  begin: 'flex-start',
-  middle: 'center',
-  end: 'flex-end',
-  default: 'center',
-};
-
-export const DIRECTIONS = {
-  column: 'column',
-  row: 'row',
-  default: 'row',
-};
-
 export default applyLayoutConstraints;
