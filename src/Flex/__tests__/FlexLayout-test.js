@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FlexLayout } from '../';
+import FlexLayout from '../';
 
 describe('container', () => {
   describe('default behaviour', () => {
@@ -41,13 +41,6 @@ describe('container', () => {
         <FlexLayout container={SampleComponent} />,
       ).find(SampleComponent);
       expect(container).toBePresent();
-    });
-
-    it('does not render the container or children if the container type is invalid', () => {
-      const container = shallow(
-        <FlexLayout container="tht" />,
-      ).find('tht');
-      expect(container).not.toBePresent();
     });
   });
 
