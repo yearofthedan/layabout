@@ -1,4 +1,4 @@
-Contributing to Layabout
+# Contributing to Layabout
 
 To contribute, fork the repo and submit a pull request. A good amount of test coverage is desired, so please include tests where appropriate.
 
