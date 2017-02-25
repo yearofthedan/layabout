@@ -8,7 +8,7 @@ Low config layout components for React.
 
 ---
 
-Issues and contributions are welcome. Specifics on how and the guiding philosophy are under [CONTRIBUTING.md](https://github.com/rabblerouser/rabblerouser-core/blob/master/CONTRIBUTING.md).
+Issues and contributions are welcome. Specifics on how and the guiding philosophy are under [CONTRIBUTING.md](https://github.com/yearofthedan/layabout/blob/master/CONTRIBUTING.md).
 
 **This is very much in alpha, so expect the api to shift a lot.**
 
