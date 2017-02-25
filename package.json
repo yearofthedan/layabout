@@ -1,10 +1,14 @@
 {
   "name": "layabout",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Simple layout components for React",
   "author": "Dan Mutton",
   "license": "Apache-2.0",
   "homepage": "https://github.com/yearofthedan/layabout#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yearofthedan/layabout.git"
+  },
   "bugs": {
     "url": "https://github.com/yearofthedan/layabout/issues"
   },
