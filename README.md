@@ -1,6 +1,5 @@
 # Layabout
-
-![build_status](https://app.snap-ci.com/yearofthedan/layabout/branch/master/build_image)
+[![Build Status](https://circleci.com/gh/yearofthedan/layabout.svg?style=svg)](https://circleci.com/gh/yearofthedan/layabout)
 
 Low config layout components for React.
 
