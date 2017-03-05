@@ -3,7 +3,7 @@ import layout from './layout';
 import { POSITIONS, DIRECTIONS } from '../styleConstants';
 import validContainer from '../containerValidation';
 
-const { oneOfType, arrayOf, element, string, number } = PropTypes;
+const { oneOfType, arrayOf, node, string, number } = PropTypes;
 
 const FlexLayout = ({ children, sizes, container, alignCrossAxis, direction }) => (
   createElement(container, {
@@ -18,7 +18,7 @@ const FlexLayout = ({ children, sizes, container, alignCrossAxis, direction }) =
 );
 
 FlexLayout.propTypes = {
-  children: oneOfType([element, arrayOf(element)]),
+  children: oneOfType([node, arrayOf(node)]),
   sizes: arrayOf(number),
   alignCrossAxis: string,
   direction: string,

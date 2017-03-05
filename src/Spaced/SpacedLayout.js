@@ -2,7 +2,7 @@ import { PropTypes, createElement } from 'react';
 import { POSITIONS, DIRECTIONS, SPACING } from '../styleConstants';
 import validContainer from '../containerValidation';
 
-const { oneOfType, arrayOf, element, string } = PropTypes;
+const { oneOfType, arrayOf, node, string } = PropTypes;
 
 const SpacedLayout = ({ children, container, spacing, alignCrossAxis, direction }) =>
   createElement(container, {
@@ -15,7 +15,7 @@ const SpacedLayout = ({ children, container, spacing, alignCrossAxis, direction 
   }, children);
 
 SpacedLayout.propTypes = {
-  children: oneOfType([element, arrayOf(element)]),
+  children: oneOfType([node, arrayOf(node)]),
   alignCrossAxis: string,
   container: validContainer,
   direction: string,

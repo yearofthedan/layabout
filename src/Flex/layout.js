@@ -1,4 +1,4 @@
-import { Children, cloneElement } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 
 const deriveFlex = (index, sizes, childrenCount = 1) => {
   const sizeCount = sizes.length;
@@ -11,6 +11,7 @@ const deriveFlex = (index, sizes, childrenCount = 1) => {
 };
 
 const applyLayoutConstraints = (children, sizes) => Children.toArray(children)
+  .filter(isValidElement)
   .map((child, index) => cloneElement(child, {
     style: {
       ...child.props.style,
