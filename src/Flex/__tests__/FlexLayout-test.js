@@ -99,7 +99,6 @@ describe('children', () => {
     });
   });
 
-
   describe('sizes', () => {
     it('gives each child the flexBasis for its position', () => {
       const rendered = shallow(
@@ -141,15 +140,15 @@ describe('children', () => {
 
     it('filters out any non element nodes', () => {
       const rendered = shallow(
-        <FlexLayout sizes={[3, 4, 1, 1, 1]}>
+        <FlexLayout>
           { false }
           { null }
           some text
           <div id="1" />
           <div id="2" />
         </FlexLayout>);
-      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 30%');
-      expect(rendered.find('#2')).toHaveStyle('flex', '0 0 40%');
+      expect(rendered.find('#1')).toHaveStyle('flex', '0 0 50%');
+      expect(rendered.find('#2')).toHaveStyle('flex', '0 0 50%');
     });
   });
 });

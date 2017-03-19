@@ -12,10 +12,10 @@ const deriveFlex = (index, sizes, childrenCount = 1) => {
 
 const applyLayoutConstraints = (children, sizes) => Children.toArray(children)
   .filter(isValidElement)
-  .map((child, index) => cloneElement(child, {
+  .map((child, index, { length }) => cloneElement(child, {
     style: {
       ...child.props.style,
-      flex: `0 0 ${deriveFlex(index, sizes, children.length)}%`,
+      flex: `0 0 ${deriveFlex(index, sizes, length)}%`,
     },
     key: index,
   }));
