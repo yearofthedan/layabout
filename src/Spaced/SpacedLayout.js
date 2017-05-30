@@ -1,4 +1,5 @@
-import { PropTypes, createElement } from 'react';
+import { createElement } from 'react';
+import PropTypes from 'prop-types';
 import { POSITIONS, DIRECTIONS, SPACING } from '../styleConstants';
 import validContainer from '../containerValidation';
 

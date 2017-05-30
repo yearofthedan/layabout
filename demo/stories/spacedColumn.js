@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
-import { withKnobs, select } from '@kadira/storybook-addon-knobs';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, select } from '@storybook/addon-knobs';
 
 import { SpacedColumn } from '../../src';
 
@@ -29,12 +29,9 @@ export default storiesOf('SpacedColumn', module)
     You can use the knobs to adjust properties and see the effect (the source will also update).
   `,
    () => {
-     const options = {
-       begin: 'begin',
-       middle: 'middle',
-       end: 'end',
-     };
-     const alignCrossAxis = select('alignCrossAxis', options, 'begin');
+     const alignCrossAxis = select('alignCrossAxis',
+     ['begin', 'middle', 'end'],
+     'begin');
 
      const spacingOptions = {
        begin: 'begin',
