@@ -1,4 +1,4 @@
-import validContainer from '../containerValidation';
+import validContainer from './containerValidation';
 
 describe('containerValidation', () => {
   const componentName = 'someComponent';

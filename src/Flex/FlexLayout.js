@@ -4,9 +4,13 @@ import layout from './layout';
 import { POSITIONS, DIRECTIONS } from '../styleConstants';
 import validContainer from '../containerValidation';
 
-const { oneOfType, arrayOf, node, string, number } = PropTypes;
+const {
+  oneOfType, arrayOf, node, string, number,
+} = PropTypes;
 
-const FlexLayout = ({ children, sizes, container, alignCrossAxis, direction }) => (
+const FlexLayout = ({
+  children, sizes, container, alignCrossAxis, direction,
+}) => (
   createElement(container, {
     style: {
       display: 'flex',

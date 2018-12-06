@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import { POSITIONS, DIRECTIONS, SPACING } from '../styleConstants';
 import validContainer from '../containerValidation';
 
-const { oneOfType, arrayOf, node, string } = PropTypes;
+const {
+  oneOfType, arrayOf, node, string,
+} = PropTypes;
 
-const SpacedLayout = ({ children, container, spacing, alignCrossAxis, direction }) =>
-  createElement(container, {
-    style: {
-      flexDirection: DIRECTIONS[direction] || DIRECTIONS.default,
-      display: 'flex',
-      alignItems: POSITIONS[alignCrossAxis] || POSITIONS.default,
-      justifyContent: SPACING[spacing] || SPACING.default,
-    },
-  }, children);
+const SpacedLayout = ({
+  children, container, spacing, alignCrossAxis, direction,
+}) => createElement(container, {
+  style: {
+    flexDirection: DIRECTIONS[direction] || DIRECTIONS.default,
+    display: 'flex',
+    alignItems: POSITIONS[alignCrossAxis] || POSITIONS.default,
+    justifyContent: SPACING[spacing] || SPACING.default,
+  },
+}, children);
 
 SpacedLayout.propTypes = {
   children: oneOfType([node, arrayOf(node)]),

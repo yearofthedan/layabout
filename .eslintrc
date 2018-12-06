@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": "off",
+  }
+}
