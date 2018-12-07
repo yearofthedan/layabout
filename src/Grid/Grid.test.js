@@ -50,12 +50,20 @@ describe('<Grid />', () => {
         expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 33%');
       });
 
-      it('does not append the unit if NaN', () => {
+      it('only appends the unit for numbers', () => {
         const container = shallow(<Grid
           template={[33, 33, '100px']}
         />).find('div');
 
         expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 100px');
+      });
+
+      it('it allows a label to be set against the template entry', () => {
+        const container = shallow(<Grid
+          template={[{ topMenuOne: '200px' }, { topMenuTwo: '30px' }, { topMenuThree: '30px' }]}
+        />).find('div');
+
+        expect(container).toHaveStyle('gridTemplateColumns', '[topMenuOne] 200px [topMenuTwo] 30px [topMenuThree] 30px');
       });
     });
   });

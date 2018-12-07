@@ -37,7 +37,7 @@ export default storiesOf('Grid', module)
     () => (
       <Grid
         container={Container}
-        template={[1, { centreButton: 1 }, { rightButton: 1 }]}
+        template={[20, { centreButton: '50px' }, { rightButton: '50px' }]}
         layout={['centreButton', 'rightButton']}
       >
         <Block style={{ backgroundColor: 'lightblue' }}>Centre Button</Block>
