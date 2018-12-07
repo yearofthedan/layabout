@@ -18,11 +18,26 @@ const Container = ({ style, children }) => <section style={{ height: '200px', bo
 
 export default storiesOf('Grid', module)
   .addDecorator(withKnobs)
-  .add('default',
+  .add('pretty basic',
     () => (
       <Grid
         container={Container}
-        structure={[1, { centreButton: 1 }, { rightButton: 1 }]}
+        template={[20, 80]}
+        layout={['centreButton', 'rightButton']}
+      >
+        <Block style={{ backgroundColor: 'lightblue' }}>Centre Button</Block>
+        <Block style={{ backgroundColor: 'yellowgreen' }}>Right Button</Block>
+      </Grid>
+    ), {
+      ...infoConfig, text: `
+        This is the default behaviour of the Grid.
+      `,
+    })
+  .add('more complex',
+    () => (
+      <Grid
+        container={Container}
+        template={[1, { centreButton: 1 }, { rightButton: 1 }]}
         layout={['centreButton', 'rightButton']}
       >
         <Block style={{ backgroundColor: 'lightblue' }}>Centre Button</Block>

@@ -1,3 +1,3 @@
 export * from './Flex';
 export * from './Spaced';
-export * from './Grid';
+export Grid from './Grid';
