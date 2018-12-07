@@ -33,38 +33,60 @@ describe('<Grid />', () => {
         expect(container).toExist();
       });
     });
+  });
 
-    describe('prop::template', () => {
-      it('maps an empty template to no grid-template', () => {
-        const container = shallow(<Grid />).find('div');
+  describe('template', () => {
+    it('maps an empty template to no grid-template', () => {
+      const container = shallow(<Grid />).find('div');
 
-        expect(container).not.toHaveStyle('gridTemplateColumns');
-        expect(container).not.toHaveStyle('grid-template-rows');
-      });
+      expect(container).not.toHaveStyle('gridTemplateColumns');
+      expect(container).not.toHaveStyle('gridTemplateRows');
+    });
 
-      it('maps basic 1 dim array with no units to use %', () => {
-        const container = shallow(<Grid
-          template={[33, 33, 33]}
-        />).find('div');
+    it('maps basic 1 dim array with no units to use %', () => {
+      const container = shallow(<Grid
+        template={[33, 33, 33]}
+      />).find('div');
 
-        expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 33%');
-      });
+      expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 33%');
+    });
 
-      it('only appends the unit for numbers', () => {
-        const container = shallow(<Grid
-          template={[33, 33, '100px']}
-        />).find('div');
+    it('only appends the unit for numbers', () => {
+      const container = shallow(<Grid
+        template={[33, 33, '100px']}
+      />).find('div');
 
-        expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 100px');
-      });
+      expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 100px');
+    });
 
-      it('it allows a label to be set against the template entry', () => {
-        const container = shallow(<Grid
+    it('it allows a label to be set against the template entry', () => {
+      const container = shallow(<Grid
+        template={[{ topMenuOne: '200px' }, { topMenuTwo: '30px' }, { topMenuThree: '30px' }]}
+      />).find('div');
+
+      expect(container).toHaveStyle('gridTemplateColumns', '[topMenuOne] 200px [topMenuTwo] 30px [topMenuThree] 30px');
+    });
+  });
+
+  describe('layout', () => {
+    it('binds the children to the labels when available', () => {
+      const rendered = shallow(
+        <Grid
           template={[{ topMenuOne: '200px' }, { topMenuTwo: '30px' }, { topMenuThree: '30px' }]}
-        />).find('div');
+          layout={
+            [
+              'topMenuTwo',
+              'topMenuThree',
+            ]
+          }
+        >
+          <div id="div1" />
+          <div id="div2" />
+        </Grid>
+      );
 
-        expect(container).toHaveStyle('gridTemplateColumns', '[topMenuOne] 200px [topMenuTwo] 30px [topMenuThree] 30px');
-      });
+      expect(rendered.find('#div1')).toHaveStyle('gridColumn', 'topMenuTwo');
+      expect(rendered.find('#div2')).toHaveStyle('gridColumn', 'topMenuThree');
     });
   });
 

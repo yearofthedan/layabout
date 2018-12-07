@@ -1,4 +1,6 @@
-import { createElement } from 'react';
+import {
+  Children, cloneElement, createElement, isValidElement,
+} from 'react';
 import PropTypes from 'prop-types';
 
 const resolveValue = entry => (Number.isInteger(entry) ? `${entry}%` : entry);
@@ -21,12 +23,22 @@ const containerStyle = template => ({
 const Grid = ({
   container: GridContainer = 'div',
   template = [],
+  layout = [],
   children,
 }) => (
   createElement(
     GridContainer,
     { style: containerStyle(template) },
-    children,
+    Children
+      .toArray(children)
+      .filter(isValidElement)
+      .map((child, index) => cloneElement(child, {
+        style: {
+          ...child.props.style,
+          gridColumn: layout[index],
+        },
+        key: index,
+      })),
   )
 );
 
