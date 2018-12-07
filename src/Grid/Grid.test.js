@@ -38,7 +38,7 @@ describe('<Grid />', () => {
       it('maps an empty template to no grid-template', () => {
         const container = shallow(<Grid />).find('div');
 
-        expect(container).not.toHaveStyle('grid-template-columns');
+        expect(container).not.toHaveStyle('gridTemplateColumns');
         expect(container).not.toHaveStyle('grid-template-rows');
       });
 
@@ -47,7 +47,15 @@ describe('<Grid />', () => {
           template={[33, 33, 33]}
         />).find('div');
 
-        expect(container).toHaveStyle('grid-template-columns', '33% 33% 33%');
+        expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 33%');
+      });
+
+      it('does not append the unit if NaN', () => {
+        const container = shallow(<Grid
+          template={[33, 33, '100px']}
+        />).find('div');
+
+        expect(container).toHaveStyle('gridTemplateColumns', '33% 33% 100px');
       });
     });
   });

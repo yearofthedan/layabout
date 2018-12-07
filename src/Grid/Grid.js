@@ -1,13 +1,13 @@
 import { createElement } from 'react';
 import PropTypes from 'prop-types';
 
-const resolveTemplateEntry = entry => (Number.isNaN(entry)
-  ? entry
-  : `${entry}%`);
+const resolveTemplateEntry = entry => (
+  Number.isInteger(entry) ? `${entry}%` : entry
+);
 
 const containerStyle = template => ({
   display: 'grid',
-  'grid-template-columns': template.map(resolveTemplateEntry).join(' '),
+  gridTemplateColumns: template.map(resolveTemplateEntry).join(' '),
 });
 
 
