@@ -12,5 +12,6 @@
   "extends": "airbnb",
   "rules": {
     "react/jsx-filename-extension": "off",
+    "react/jsx-curly-brace-presence": "off"
   }
 }

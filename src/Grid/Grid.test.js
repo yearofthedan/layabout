@@ -82,7 +82,7 @@ describe('<Grid />', () => {
         >
           <div id="div1" />
           <div id="div2" />
-        </Grid>
+        </Grid>,
       );
 
       expect(rendered.find('#div1')).toHaveStyle('gridColumn', 'topMenuTwo');
