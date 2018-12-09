@@ -19,7 +19,7 @@ const orDefault = entry => (Number.isInteger(entry) ? `${entry}fr` : entry);
 const containerStyle = (widths, heights, layout) => ({
   display: 'grid',
   gridTemplateColumns: widths.map(orDefault).join(' '),
-  gridTemplateRows: heights.join(' '),
+  gridTemplateRows: heights.map(orDefault).join(' '),
   gridTemplate: processTemplate(layout),
 });
 
@@ -48,9 +48,11 @@ const GridArea = ({
   )
 );
 
-GridArea.propTypes = () => ({
-  container: PropTypes.element,
-  template: PropTypes.array,
-});
+GridArea.propTypes = {
+  container: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  layout: PropTypes.string,
+  widths: PropTypes.array,
+  height: PropTypes.array,
+};
 
 export default GridArea;

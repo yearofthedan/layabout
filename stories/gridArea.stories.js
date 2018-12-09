@@ -13,30 +13,29 @@ const Block = ({ style, children }) => (
 );
 
 export default storiesOf('GridArea', module)
-.addDecorator(withKnobs)
-.add('pretty basic', () => {
-  const BackButton = ({style}) => <Block style={{ backgroundColor: 'lightblue', ...style }}>Back Button</Block>;
-  const ProfileButton = ({style}) => <Block style={{ backgroundColor: 'yellowgreen', ...style }}>Profile Button</Block>;
-  const Content = ({style}) => <Block style={{ backgroundColor: 'red', ...style }}>Content</Block>;
+  .addDecorator(withKnobs)
+  .add('pretty basic', () => {
+    const BackButton = ({ style }) => <Block style={{ backgroundColor: 'lightblue', ...style }}>Back Button</Block>;
+    const ProfileButton = ({ style }) => <Block style={{ backgroundColor: 'yellowgreen', ...style }}>Profile Button</Block>;
+    const Content = ({ style }) => <Block style={{ backgroundColor: 'red', ...style }}>Content</Block>;
 
-  return (
-    <GridArea
-      widths={['33%', 'auto', '100px']}
-      heights={['100px']}
-      layout={`
+    return (
+      <GridArea
+        widths={['33%', 'auto', '100px']}
+        heights={['100px']}
+        layout={`
     .             .       BackButton
     Content       Content Content
     ProfileButton div       .
        `}
-    >
-      <BackButton />
-      <Content />
-      <ProfileButton />
-      <div>Wonderful</div>
-    </GridArea>
-  );
-  }
-)
+      >
+        <BackButton />
+        <Content />
+        <ProfileButton />
+        <div>Wonderful</div>
+      </GridArea>
+    );
+  });
 
 /*
 `

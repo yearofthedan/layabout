@@ -18,7 +18,6 @@ const Block = ({ style, children }) => (
 const Container = ({ style, children }) => <section style={{ height: '200px', border: 'solid', ...style }}>{children}</section>;
 
 export default storiesOf('FlexColumn', module)
-  .addDecorator(withKnobs)
   .add('default',
     `
       This is the default behaviour of the FlexColumn.
