@@ -20,11 +20,10 @@ const orDefault = entry => (Number.isInteger(entry) ? `${entry}fr` : entry);
 
 const containerStyle = (widths, heights, layout) => ({
   display: 'grid',
+  gridTemplateAreas: processTemplate(layout),
   gridTemplateColumns: widths.map(orDefault).join(' '),
   gridTemplateRows: heights.map(orDefault).join(' '),
-  gridTemplate: processTemplate(layout),
 });
-
 
 const cloneWithStyles = (child, index) => cloneElement(child, {
   style: {

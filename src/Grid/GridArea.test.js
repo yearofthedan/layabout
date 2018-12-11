@@ -46,15 +46,15 @@ describe('<GridArea />', () => {
           }
         />,
       );
-      expect(rendered.find('div')).toHaveStyle('gridTemplate', '"CancelButton ContinueButton"');
+      expect(rendered.find('div')).toHaveStyle('gridTemplateAreas', '"CancelButton ContinueButton"');
     });
   });
 
   describe('widths', () => {
     it('maps basic 1 dim array with no units to use fr', () => {
-      const container = shallow(<GridArea widths={[1, 1, 1]} />).find('div');
+      const container = shallow(<GridArea widths={[1, 4, 1]} />).find('div');
 
-      expect(container).toHaveStyle('gridTemplateColumns', '1fr 1fr 1fr');
+      expect(container).toHaveStyle('gridTemplateColumns', '1fr 4fr 1fr');
     });
 
     it('only appends the unit for numbers', () => {

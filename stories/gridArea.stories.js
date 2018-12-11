@@ -14,7 +14,7 @@ const Block = ({ style, children }) => (
 
 export default storiesOf('GridArea', module)
   .addDecorator(withKnobs)
-  .add('fromComponents', () => {
+  .add('using fromComponents', () => {
     const BackButton = ({ style }) => <Block style={{ backgroundColor: 'lightblue', ...style }}>Back Button</Block>;
     const ProfileButton = ({ style }) => <Block style={{ backgroundColor: 'yellowgreen', ...style }}>Profile Button</Block>;
     const Content = ({ style }) => <Block style={{ backgroundColor: 'red', ...style }}>Content</Block>;
