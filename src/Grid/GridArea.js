@@ -3,6 +3,8 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
+const extractDisplayName = child => child.type.name || child.type;
+
 const processTemplate = (template) => {
   const rows = template
     .trim()
@@ -23,23 +25,24 @@ const containerStyle = (widths, heights, layout) => ({
   gridTemplate: processTemplate(layout),
 });
 
+
 const cloneWithStyles = (child, index) => cloneElement(child, {
   style: {
     ...child.props.style,
-    gridArea: child.type.name || child.type,
+    gridArea: extractDisplayName(child),
   },
   key: index,
 });
 
 const GridArea = ({
-  container: GridAreaContainer = 'div',
+  container = 'div',
   widths = ['auto'],
   heights = ['auto'],
   layout = '',
   children,
 }) => (
   createElement(
-    GridAreaContainer,
+    container,
     { style: containerStyle(widths, heights, layout) },
     Children
       .toArray(children)
