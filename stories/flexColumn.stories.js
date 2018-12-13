@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, object, select } from '@storybook/addon-knobs';
-
 import { FlexColumn } from '../src';
+import { object, select } from '@storybook/addon-knobs';
 
 const infoConfig = {
   inline: true, source: true, header: false, propTables: false,
@@ -16,19 +15,16 @@ const Block = ({ style, children }) => (
   </div>
 );
 const Container = ({ style, children }) => <section style={{ height: '200px', border: 'solid', ...style }}>{children}</section>;
-
+//
 export default storiesOf('FlexColumn', module)
   .add('default',
-    `
-      This is the default behaviour of the FlexColumn.
-    `,
     () => (
       <div style={{ display: 'flex', height: '200px' }}>
-        <FlexColumn>
-          <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
-          <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
-        </FlexColumn>
-      </div>
+         <FlexColumn>
+           <Block style={{ backgroundColor: 'lightblue' }}>Col 1</Block>
+           <Block style={{ backgroundColor: 'yellowgreen' }}>Col 2</Block>
+         </FlexColumn>
+       </div>
     ), {
       ...infoConfig, text: `
       This is the default behaviour of the FlexColumn.
@@ -46,14 +42,14 @@ export default storiesOf('FlexColumn', module)
 
       return (
         <section>
-          <FlexColumn container={Container} alignCrossAxis={alignCrossAxis} sizes={sizes}>
-            <Block style={{ backgroundColor: 'lightblue' }}>1</Block>
-            <Block style={{ backgroundColor: 'yellowgreen', width: '20px' }}>2</Block>
-            <Block style={{ backgroundColor: 'red' }}>3</Block>
-            <Block style={{ backgroundColor: 'papayawhip' }}>4</Block>
-            <Block style={{ backgroundColor: 'orange' }}>5</Block>
-          </FlexColumn>
-        </section>
+           <FlexColumn container={Container} alignCrossAxis={alignCrossAxis} sizes={sizes}>
+             <Block style={{ backgroundColor: 'lightblue' }}>1</Block>
+             <Block style={{ backgroundColor: 'yellowgreen', width: '20px' }}>2</Block>
+             <Block style={{ backgroundColor: 'red' }}>3</Block>
+             <Block style={{ backgroundColor: 'papayawhip' }}>4</Block>
+             <Block style={{ backgroundColor: 'orange' }}>5</Block>
+           </FlexColumn>
+         </section>
       );
     }, {
       ...infoConfig, text: `
