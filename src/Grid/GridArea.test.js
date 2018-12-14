@@ -104,5 +104,26 @@ describe('<GridArea />', () => {
         expect(rendered.find('#div2')).toExist();
       });
     });
+    describe('when a template is provided', () => {
+      it('only binds the gridArea to recognised elements', () => {
+        const rendered = shallow(
+          <GridArea
+            layout={
+              `
+              button input
+            `
+            }
+          >
+            <button />
+            <p />
+            <input />
+          </GridArea>,
+        );
+
+        expect(rendered.find('button')).toHaveStyle('gridArea', 'button');
+        expect(rendered.find('input')).toHaveStyle('gridArea', 'input');
+        expect(rendered.find('p')).not.toHaveStyle('gridArea', 'p');
+      });
+    });
   });
 });

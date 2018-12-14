@@ -8,30 +8,35 @@ import PropTypes from 'prop-types';
 
 const extractDisplayName = child => child.type.name || child.type;
 
-const processTemplate = (template) => {
-  const rows = template
+const processTemplate = (layout) => {
+  const template = {};
+
+  template.keys = new Set(layout.match(/\w+/g));
+
+  const rows = layout
     .trim()
     .match(/(.)+/g);
-  return rows && rows
+  template.string = rows && rows
     .reduce(
       (prior, entry, index) => `${prior}${index > 0 ? '\n' : ''}"${entry}"`,
       '',
     );
+  return template;
 };
 
 const orDefault = entry => (Number.isInteger(entry) ? `${entry}fr` : entry);
 
-const containerStyle = (widths, heights, layout) => ({
+const containerStyle = (widths, heights, template) => ({
   display: 'grid',
-  gridTemplateAreas: processTemplate(layout),
+  gridTemplateAreas: template,
   gridTemplateColumns: widths.map(orDefault).join(' '),
   gridTemplateRows: heights.map(orDefault).join(' '),
 });
 
-const cloneWithStyles = (child, index) => cloneElement(child, {
+const cloneWithStyles = (child, index, keys) => cloneElement(child, {
   style: {
     ...child.props.style,
-    gridArea: extractDisplayName(child),
+    gridArea: keys.has(extractDisplayName(child)) && extractDisplayName(child),
   },
   key: index,
 });
@@ -43,18 +48,24 @@ const GridArea = ({
   layout = '',
   children,
   style,
-}) => (
-  createElement(container, {
-    style: {
-      ...style,
-      ...containerStyle(widths, heights, layout),
+}) => {
+  const template = processTemplate(layout);
+
+  return (
+    createElement(container, {
+      style: {
+        ...style,
+        ...containerStyle(widths, heights, template.string),
+      },
     },
-  },
-  Children
-    .toArray(children)
-    .filter(isValidElement)
-    .map(cloneWithStyles))
-);
+    template.keys.size === 0
+      ? children
+      : Children
+        .toArray(children)
+        .filter(isValidElement)
+        .map((child, index) => cloneWithStyles(child, index, template.keys)))
+  );
+};
 
 GridArea.propTypes = {
   container: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
