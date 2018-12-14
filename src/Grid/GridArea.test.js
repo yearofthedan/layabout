@@ -72,6 +72,21 @@ describe('<GridArea />', () => {
     });
   });
 
+  describe('rowGap', () => {
+    it('defaults to nothing', () => {
+      const rendered = shallow(<GridArea />);
+
+      expect(rendered.find('div')).toHaveStyle('gridRowGap', undefined);
+    });
+
+    it('passes a string as the gap', () => {
+      const rendered = shallow(<GridArea template="p" rowGap="10px" />);
+
+      expect(rendered.find('div')).toHaveStyle('gridRowGap', '10px');
+    });
+  });
+
+
   describe('widths', () => {
     it('maps basic 1 dim array with no units to use fr', () => {
       const container = shallow(<GridArea widths={[1, 4, 1]} />).find('div');
@@ -124,17 +139,17 @@ describe('<GridArea />', () => {
           <GridArea
             layout={
               `
-              button input
+              textarea input
             `
             }
           >
-            <button />
+            <textarea />
             <p />
             <input />
           </GridArea>,
         );
 
-        expect(rendered.find('button')).toHaveStyle('gridArea', 'button');
+        expect(rendered.find('textarea')).toHaveStyle('gridArea', 'textarea');
         expect(rendered.find('input')).toHaveStyle('gridArea', 'input');
         expect(rendered.find('p')).not.toHaveStyle('gridArea', 'p');
       });
