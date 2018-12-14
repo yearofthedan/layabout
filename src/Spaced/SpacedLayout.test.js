@@ -48,6 +48,14 @@ describe('<SpacedLayout />', () => {
       });
     });
 
+    describe('style prop', () => {
+      it('passes any styles through to the container', () => {
+        const container = shallow(<SpacedLayout style={{ color: 'blue' }} />).find('div');
+
+        expect(container).toHaveStyle('color', 'blue');
+      });
+    });
+
     describe('spacing', () => {
       it('applies a justify-content flex-start for begin', () => {
         const container = shallow(<SpacedLayout spacing="begin" />).first();

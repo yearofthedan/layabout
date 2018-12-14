@@ -9,10 +9,11 @@ const {
 } = PropTypes;
 
 const FlexLayout = ({
-  children, sizes, container, alignCrossAxis, direction,
+  children, sizes, container, alignCrossAxis, direction, style,
 }) => (
   createElement(container, {
     style: {
+      ...style,
       display: 'flex',
       flexDirection: DIRECTIONS[direction] || DIRECTIONS.default,
       alignContent: POSITIONS.begin,

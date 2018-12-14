@@ -8,9 +8,10 @@ const {
 } = PropTypes;
 
 const SpacedLayout = ({
-  children, container, spacing, alignCrossAxis, direction,
+  children, container, spacing, alignCrossAxis, direction, style,
 }) => createElement(container, {
   style: {
+    ...style,
     flexDirection: DIRECTIONS[direction] || DIRECTIONS.default,
     display: 'flex',
     alignItems: POSITIONS[alignCrossAxis] || POSITIONS.default,

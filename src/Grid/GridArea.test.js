@@ -19,6 +19,14 @@ describe('<GridArea />', () => {
       });
     });
 
+    describe('style prop', () => {
+      it('passes any styles through to the container', () => {
+        const container = shallow(<GridArea style={{ color: 'blue' }} />).find('div');
+
+        expect(container).toHaveStyle('color', 'blue');
+      });
+    });
+
     describe('container template', () => {
       it('renders a provided dom element as the container', () => {
         const container = shallow(<GridArea container="section" />).find('section');

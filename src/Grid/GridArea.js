@@ -1,5 +1,8 @@
 import {
-  Children, cloneElement, createElement, isValidElement,
+  Children,
+  cloneElement,
+  createElement,
+  isValidElement,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -39,15 +42,18 @@ const GridArea = ({
   heights = ['auto'],
   layout = '',
   children,
+  style,
 }) => (
-  createElement(
-    container,
-    { style: containerStyle(widths, heights, layout) },
-    Children
-      .toArray(children)
-      .filter(isValidElement)
-      .map(cloneWithStyles),
-  )
+  createElement(container, {
+    style: {
+      ...style,
+      ...containerStyle(widths, heights, layout),
+    },
+  },
+  Children
+    .toArray(children)
+    .filter(isValidElement)
+    .map(cloneWithStyles))
 );
 
 GridArea.propTypes = {
