@@ -26,11 +26,12 @@ const processTemplate = (layout) => {
 
 const orDefault = entry => (Number.isInteger(entry) ? `${entry}fr` : entry);
 
-const containerStyle = (widths, heights, template) => ({
+const containerStyle = (widths, heights, template, columnGap) => ({
   display: 'grid',
   gridTemplateAreas: template,
   gridTemplateColumns: widths.map(orDefault).join(' '),
   gridTemplateRows: heights.map(orDefault).join(' '),
+  gridColumnGap: columnGap,
 });
 
 const cloneWithStyles = (child, index, keys) => cloneElement(child, {
@@ -45,17 +46,17 @@ const GridArea = ({
   container = 'div',
   widths = ['auto'],
   heights = ['auto'],
+  columnGap,
   layout = '',
   children,
   style,
 }) => {
   const template = processTemplate(layout);
-
   return (
     createElement(container, {
       style: {
         ...style,
-        ...containerStyle(widths, heights, template.string),
+        ...containerStyle(widths, heights, template.string, columnGap),
       },
     },
     template.keys.size === 0
@@ -69,6 +70,7 @@ const GridArea = ({
 
 GridArea.propTypes = {
   container: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  columnGap: PropTypes.string,
   layout: PropTypes.string,
   widths: PropTypes.array,
   height: PropTypes.array,

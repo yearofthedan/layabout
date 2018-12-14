@@ -58,6 +58,20 @@ describe('<GridArea />', () => {
     });
   });
 
+  describe('columnGap', () => {
+    it('defaults to nothing', () => {
+      const rendered = shallow(<GridArea />);
+
+      expect(rendered.find('div')).toHaveStyle('gridColumnGap', undefined);
+    });
+
+    it('passes a string as the gap', () => {
+      const rendered = shallow(<GridArea template="p" columnGap="10px" />);
+
+      expect(rendered.find('div')).toHaveStyle('gridColumnGap', '10px');
+    });
+  });
+
   describe('widths', () => {
     it('maps basic 1 dim array with no units to use fr', () => {
       const container = shallow(<GridArea widths={[1, 4, 1]} />).find('div');
