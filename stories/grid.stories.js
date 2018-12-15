@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import Grid, { fromComponents } from '../src/Grid';
+import { Grid, fromComponents } from '../src';
 
 const Block = ({ style, children }) => (
   <div style={{

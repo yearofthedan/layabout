@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Grid, { fromComponents } from '../src/Grid';
+import { Grid, fromComponents } from '../src/Grid';
 import SpacedRow from '../src/Spaced/SpacedRow';
 import SpacedLayout from '../src/Spaced/SpacedLayout';
 import FlexRow from '../src/Flex/FlexRow';
