@@ -1,50 +1,82 @@
 import {
-  Children, cloneElement, createElement, isValidElement,
+  Children,
+  cloneElement,
+  createElement,
+  isValidElement,
 } from 'react';
 import PropTypes from 'prop-types';
 
-const resolveValue = entry => (Number.isInteger(entry) ? `${entry}%` : entry);
+const extractDisplayName = child => child.type.name || child.type;
 
-const resolveTemplateEntryFromObject = ([key, value]) => `[${key}] ${resolveValue(value)}`;
+const processTemplate = (layout) => {
+  const template = {};
 
-const resolveTemplateEntry = (entry) => {
-  if (typeof entry === 'object') {
-    return resolveTemplateEntryFromObject(Object.entries(entry)[0]);
-  }
+  template.keys = new Set(layout.match(/\w+/g));
 
-  return resolveValue(entry);
+  const rows = layout
+    .trim()
+    .match(/(.)+/g);
+  template.string = rows && rows
+    .reduce(
+      (prior, entry, index) => `${prior}${index > 0 ? '\n' : ''}"${entry}"`,
+      '',
+    );
+  return template;
 };
 
-const containerStyle = template => ({
+const orDefault = entry => (Number.isInteger(entry) ? `${entry}fr` : entry);
+
+const containerStyle = (widths, heights, template, columnGap, rowGap) => ({
   display: 'grid',
-  gridTemplateColumns: template.map(resolveTemplateEntry).join(' '),
+  gridTemplateAreas: template,
+  gridTemplateColumns: widths.map(orDefault).join(' '),
+  gridTemplateRows: heights.map(orDefault).join(' '),
+  gridColumnGap: columnGap,
+  gridRowGap: rowGap,
+});
+
+const cloneWithStyles = (child, index, keys) => cloneElement(child, {
+  style: {
+    ...child.props.style,
+    gridArea: keys.has(extractDisplayName(child)) && extractDisplayName(child),
+  },
+  key: index,
 });
 
 const Grid = ({
-  container: GridContainer = 'div',
-  template = [],
-  layout = [],
+  container = 'div',
+  widths = ['auto'],
+  heights = ['auto'],
+  columnGap,
+  rowGap,
+  layout = '',
   children,
-}) => (
-  createElement(
-    GridContainer,
-    { style: containerStyle(template) },
-    Children
-      .toArray(children)
-      .filter(isValidElement)
-      .map((child, index) => cloneElement(child, {
-        style: {
-          ...child.props.style,
-          gridColumn: layout[index],
-        },
-        key: index,
-      })),
-  )
-);
+  style,
+}) => {
+  const template = processTemplate(layout);
+  return (
+    createElement(container, {
+      style: {
+        ...style,
+        ...containerStyle(widths, heights, template.string, columnGap, rowGap),
+      },
+    },
+    template.keys.size === 0
+      ? children
+      : Children
+        .toArray(children)
+        .filter(isValidElement)
+        .map((child, index) => cloneWithStyles(child, index, template.keys)))
+  );
+};
 
-Grid.propTypes = () => ({
-  container: PropTypes.element,
-  template: PropTypes.array,
-});
+Grid.propTypes = {
+  container: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  columnGap: PropTypes.string,
+  rowGap: PropTypes.string,
+  layout: PropTypes.string,
+  widths: PropTypes.array,
+  height: PropTypes.array,
+};
 
 export default Grid;
