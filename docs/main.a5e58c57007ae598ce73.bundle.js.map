@@ -1,0 +1,1 @@
+{"version":3,"file":"main.a5e58c57007ae598ce73.bundle.js","sources":["webpack:///./src/Flex/FlexRow.js"],"sourcesContent":["import React from 'react';\nimport FlexLayout from './FlexLayout';\n\nconst FlexRow = props => <FlexLayout direction=\"row\" {...props} />;\nexport default FlexRow;\n"],"mappings":"AAGA","sourceRoot":""}
