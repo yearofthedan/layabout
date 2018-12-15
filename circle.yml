@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   test:
     docker:
@@ -9,7 +9,7 @@ jobs:
         name: Test
         command: yarn test
 workflows:
-  version: 2.1
+  version: 2
   test:
     jobs:
     - test
