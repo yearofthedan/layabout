@@ -33,11 +33,11 @@ export default storiesOf('FlexRow', module)
   .add('adjust properties',
     () => {
       const options = {
-        begin: 'begin',
-        middle: 'middle',
+        start: 'start',
+        center: 'center',
         end: 'end',
       };
-      const alignCrossAxis = select('alignCrossAxis', options, 'begin');
+      const alignCrossAxis = select('alignCrossAxis', options, 'start');
       const sizes = object('sizes', [1, 1, 1]);
 
       return (

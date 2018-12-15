@@ -57,12 +57,12 @@ describe('<FlexLayout />', () => {
     });
 
     describe('align cross axis', () => {
-      it('applies a align-items start for begin', () => {
-        const container = shallow(<FlexLayout alignCrossAxis="begin" />).first();
+      it('applies a align-items start for start', () => {
+        const container = shallow(<FlexLayout alignCrossAxis="start" />).first();
         expect(container).toHaveStyle('alignItems', 'flex-start');
       });
-      it('applies a align-items center for middle', () => {
-        const container = shallow(<FlexLayout alignCrossAxis="middle" />).first();
+      it('applies a align-items center for center', () => {
+        const container = shallow(<FlexLayout alignCrossAxis="center" />).first();
         expect(container).toHaveStyle('alignItems', 'center');
       });
       it('applies a align-items end for end', () => {

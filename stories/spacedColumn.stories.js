@@ -35,17 +35,17 @@ export default storiesOf('SpacedColumn', module)
   .add('adjust properties',
     () => {
       const alignCrossAxis = select('alignCrossAxis',
-        ['begin', 'middle', 'end'],
-        'begin');
+        ['start', 'center', 'end'],
+        'start');
 
       const spacingOptions = {
-        begin: 'begin',
-        middle: 'middle',
+        start: 'start',
+        center: 'center',
         end: 'end',
         between: 'between',
         around: 'around',
       };
-      const spacing = select('spacing', spacingOptions, 'begin');
+      const spacing = select('spacing', spacingOptions, 'start');
 
       return (
         <section>

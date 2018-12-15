@@ -16,7 +16,7 @@ const FlexLayout = ({
       ...style,
       display: 'flex',
       flexDirection: DIRECTIONS[direction] || DIRECTIONS.default,
-      alignContent: POSITIONS.begin,
+      alignContent: POSITIONS.start,
       flexWrap: 'wrap',
       alignItems: POSITIONS[alignCrossAxis] || POSITIONS.default,
     },

@@ -32,7 +32,7 @@ SpacedLayout.defaultProps = {
   container: 'div',
   spacing: 'between',
   direction: 'row',
-  alignCrossAxis: 'middle',
+  alignCrossAxis: 'center',
 };
 
 export default SpacedLayout;

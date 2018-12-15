@@ -1,13 +1,13 @@
 export const POSITIONS = {
-  begin: 'flex-start',
-  middle: 'center',
+  start: 'flex-start',
+  center: 'center',
   end: 'flex-end',
   default: 'center',
 };
 
 export const SPACING = {
-  begin: 'flex-start',
-  middle: 'center',
+  start: 'flex-start',
+  center: 'center',
   end: 'flex-end',
   around: 'space-around',
   between: 'space-between',

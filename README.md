@@ -37,7 +37,7 @@ If no element is provided a `div` will be rendered as the container.
 - Describes how to align content on the cross axis.
 
 Options:
-- `String` of one of the following: `begin`, `middle`, `end`
+- `String` of one of the following: `start`, `center  `, `end`
 
 
 
@@ -61,7 +61,7 @@ Lays out its children within the space available with any remaining spacing allo
 `spacing` (optional) describes where to allocate remaining space.
 
 Options:
-- `String` of one of the following: `between`, `around`, `begin`, `end`, `middle`
+- `String` of one of the following: `between`, `around`, `start`, `end`, `center  `
 
 If no value is provided spacing will be allocated to `between`.
 
@@ -77,7 +77,7 @@ If no element is provided a `div` will be rendered as the container.
 - Describes how to align content on the cross axis.
 
 Options:
-- `String` of one of the following: `begin`, `middle`, `end`
+- `String` of one of the following: `start`, `center  `, `end`
 
 
 

@@ -39,20 +39,20 @@ export default storiesOf('SpacedRow', module)
   `,
     () => {
       const options = {
-        begin: 'begin',
-        middle: 'middle',
+        start: 'start',
+        center: 'center',
         end: 'end',
       };
-      const alignCrossAxis = select('alignCrossAxis', options, 'begin');
+      const alignCrossAxis = select('alignCrossAxis', options, 'start');
 
       const spacingOptions = {
-        begin: 'begin',
-        middle: 'middle',
+        start: 'start',
+        center: 'center',
         end: 'end',
         between: 'between',
         around: 'around',
       };
-      const spacing = select('spacing', spacingOptions, 'begin');
+      const spacing = select('spacing', spacingOptions, 'start');
 
       return (
         <section>

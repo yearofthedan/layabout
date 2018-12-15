@@ -31,7 +31,7 @@ const Page = ({ style, children }) => <article style={{ height: '100vh', ...styl
 
     const LogoSection = ({ style }) => (
       <SpacedRow
-        spacing="middle"
+        spacing="center"
         style={style}
       >
         <img

@@ -57,13 +57,13 @@ describe('<SpacedLayout />', () => {
     });
 
     describe('spacing', () => {
-      it('applies a justify-content flex-start for begin', () => {
-        const container = shallow(<SpacedLayout spacing="begin" />).first();
+      it('applies a justify-content flex-start for start', () => {
+        const container = shallow(<SpacedLayout spacing="start" />).first();
         expect(container).toHaveStyle('justifyContent', 'flex-start');
       });
 
-      it('applies a justify-content center for middle', () => {
-        const container = shallow(<SpacedLayout spacing="middle" />).first();
+      it('applies a justify-content center for center', () => {
+        const container = shallow(<SpacedLayout spacing="center" />).first();
         expect(container).toHaveStyle('justifyContent', 'center');
       });
 
@@ -89,12 +89,12 @@ describe('<SpacedLayout />', () => {
     });
 
     describe('align cross axis', () => {
-      it('applies a align-items start for begin', () => {
-        const container = shallow(<SpacedLayout alignCrossAxis="begin" />).first();
+      it('applies a align-items start for start', () => {
+        const container = shallow(<SpacedLayout alignCrossAxis="start" />).first();
         expect(container).toHaveStyle('alignItems', 'flex-start');
       });
-      it('applies a align-items center for middle', () => {
-        const container = shallow(<SpacedLayout alignCrossAxis="middle" />).first();
+      it('applies a align-items center for center', () => {
+        const container = shallow(<SpacedLayout alignCrossAxis="center" />).first();
         expect(container).toHaveStyle('alignItems', 'center');
       });
       it('applies a align-items end for end', () => {
