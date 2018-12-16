@@ -1,11 +1,7 @@
-const resolveToken = token => (
-  token
-    ? token.name || token
-    : ''
-);
+const resolveToken = token => (token ? token.displayName || token.name : token);
 
 const templated = (strings, ...tokenFns) => strings.reduce(
-  (prev, curr) => `${prev}${curr}${resolveToken(tokenFns.shift())}`,
+  (prev, curr) => `${prev}${curr}${tokenFns.length > 0 ? resolveToken(tokenFns.shift()) : ''}`,
   '',
 );
 

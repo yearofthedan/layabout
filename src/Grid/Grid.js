@@ -6,7 +6,7 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-const extractDisplayName = child => child.type.name || child.type;
+const extractDisplayName = token => token.displayName || token.type || token.name || token;
 
 const processTemplate = (layout) => {
   const template = {};
