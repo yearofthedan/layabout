@@ -6,7 +6,12 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-const extractDisplayName = token => token.displayName || token.type || token.name || token;
+const extractDisplayName = (token) => {
+  if (token.type) {
+    return token.type.displayName || token.type;
+  }
+  return token;
+};
 
 const processTemplate = (layout) => {
   const template = {};
