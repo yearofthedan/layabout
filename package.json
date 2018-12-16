@@ -1,6 +1,6 @@
 {
   "name": "layabout",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Simple layout components for React",
   "author": "Dan Mutton",
   "license": "Apache-2.0",
