@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const extractDisplayName = (token) => {
   if (token.type) {
-    return token.type.displayName || token.type;
+    return token.type.displayName || token.type.name || token.type;
   }
   return token;
 };
