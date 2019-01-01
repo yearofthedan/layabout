@@ -27,6 +27,8 @@ Lays out children according to a defined grid structure
 |style|Style properties to be applied to the container. This particularly supports use cases where you're combining layout components.|A style object|_none_
 |layout|A template expressing the entries in the grid. See _below_ for some advice on use|A multiline string where each line represents one row in the grid and each line contains the list of elements at each column position. Use the child component name, or a `.` to denote an empty cell. If a component is named multiple times it means that the component takes up multiple cells. |Empty layout, meaning the children will flow into the provided column and row structure defined by the `widths` and `heights` props
 
+Any other props are passed through to the container.
+
 **Hey! Some things to think about with the layout prop**
 The magic of Grid is in the binding between the template as described in the layout prop and the children.
 

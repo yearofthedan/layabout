@@ -41,6 +41,12 @@ describe('<Grid />', () => {
         expect(container).toExist();
       });
     });
+
+    it('passes any other props to the container', () => {
+      const container = shallow(<Grid name="some-name" />).find('div');
+
+      expect(container).toHaveProp('name', 'some-name');
+    });
   });
 
   describe('layout', () => {

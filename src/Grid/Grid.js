@@ -57,6 +57,7 @@ const Grid = ({
   layout = '',
   children,
   style,
+  ...rest
 }) => {
   const template = processTemplate(layout);
   return (
@@ -65,6 +66,7 @@ const Grid = ({
         ...style,
         ...containerStyle(widths, heights, template.string, columnGap, rowGap),
       },
+      ...rest,
     },
     template.keys.size === 0
       ? children
