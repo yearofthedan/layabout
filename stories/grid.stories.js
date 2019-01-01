@@ -12,6 +12,16 @@ const Block = ({ style, children }) => (
   </div>
 );
 
+const CenteredContainer = ({ style, children }) => (
+  <div style={{
+    alignItems: 'center',
+    justifyItems: 'center',
+    ...style,
+  }}
+  >
+    {children}
+  </div>
+);
 export default storiesOf('Grid', module)
   .addDecorator(withKnobs)
   .add('using fromComponents', () => {
@@ -28,6 +38,7 @@ export default storiesOf('Grid', module)
           ${Content}       ${Content} ${Content}
           ${ProfileButton} div        .
        `}
+        container={CenteredContainer}
       >
         <BackButton />
         <Content />

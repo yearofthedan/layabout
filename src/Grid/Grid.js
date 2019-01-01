@@ -78,7 +78,11 @@ const Grid = ({
 };
 
 Grid.propTypes = {
-  container: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  container: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+    PropTypes.shape({ render: PropTypes.func.isRequired }),
+  ]),
   columnGap: PropTypes.string,
   rowGap: PropTypes.string,
   layout: PropTypes.string,
