@@ -42,8 +42,8 @@ const containerStyle = (widths, heights, template, columnGap, rowGap) => ({
 
 const cloneWithStyles = (child, index, keys) => cloneElement(child, {
   style: {
-    ...child.props.style,
     gridArea: keys.has(extractDisplayName(child)) && extractDisplayName(child),
+    ...child.props.style,
   },
   key: index,
 });
