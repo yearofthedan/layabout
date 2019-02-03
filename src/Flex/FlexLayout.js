@@ -1,12 +1,15 @@
 import { createElement } from 'react';
-import PropTypes from 'prop-types';
+import {
+  arrayOf,
+  func,
+  node,
+  number,
+  oneOfType,
+  string,
+  shape,
+} from 'prop-types';
 import layout from './layout';
 import { POSITIONS, DIRECTIONS } from '../styleConstants';
-import validContainer from '../containerValidation';
-
-const {
-  oneOfType, arrayOf, node, string, number,
-} = PropTypes;
 
 const FlexLayout = ({
   children, sizes, container, alignCrossAxis, direction, style,
@@ -28,7 +31,11 @@ FlexLayout.propTypes = {
   sizes: arrayOf(number),
   alignCrossAxis: string,
   direction: string,
-  container: validContainer,
+  container: oneOfType([
+    func,
+    string,
+    shape({ render: func.isRequired }),
+  ]),
 };
 
 FlexLayout.defaultProps = {

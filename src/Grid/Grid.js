@@ -4,7 +4,13 @@ import {
   createElement,
   isValidElement,
 } from 'react';
-import PropTypes from 'prop-types';
+import {
+  array,
+  func,
+  oneOfType,
+  shape,
+  string,
+} from 'prop-types';
 
 const extractDisplayName = (token) => {
   if (token.type) {
@@ -78,16 +84,16 @@ const Grid = ({
 };
 
 Grid.propTypes = {
-  container: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-    PropTypes.shape({ render: PropTypes.func.isRequired }),
+  container: oneOfType([
+    func,
+    string,
+    shape({ render: func.isRequired }),
   ]),
-  columnGap: PropTypes.string,
-  rowGap: PropTypes.string,
-  layout: PropTypes.string,
-  widths: PropTypes.array,
-  height: PropTypes.array,
+  columnGap: string,
+  rowGap: string,
+  layout: string,
+  widths: array,
+  height: array,
 };
 
 export default Grid;
