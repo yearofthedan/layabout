@@ -52,16 +52,18 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.0.0",
     "jest-environment-enzyme": "^7.0.1",
-    "jest-enzyme": "^7.0.1",
-    "react-dom": "^16.7.0"
+    "jest-enzyme": "^7.0.1"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
-    "react": "^16.7.0",
     "react-dom-factories": "^1.0.2"
   },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
   "jest": {
-    "setupTestFrameworkScriptFile": "jest-enzyme",
+    "setupFilesAfterEnv": ["jest-enzyme"],
     "testEnvironment": "enzyme",
     "resetMocks": true
   }
